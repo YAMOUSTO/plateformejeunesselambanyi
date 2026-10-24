@@ -25,6 +25,8 @@ import type {
 
 export default function App() {
   const [currentUser, setCurrentUser] = useState<UserProfile | null>(null);
+  const [canSwitchProfiles, setCanSwitchProfiles] = useState<boolean>(false);
+  const [switchError, setSwitchError] = useState<string | null>(null);
   const [availableUsers, setAvailableUsers] = useState<UserProfile[]>([]);
   const [quartiers, setQuartiers] = useState<Quartier[]>([]);
   const [fichesIndividuelles, setFichesIndividuelles] = useState<FicheIndividuelle[]>([]);
@@ -56,7 +58,10 @@ export default function App() {
         fetch('/api/quartiers').then((r) => r.json()),
       ]);
 
-      if (userRes.success) setCurrentUser(userRes.user);
+      if (userRes.success) {
+        setCurrentUser(userRes.user);
+        setCanSwitchProfiles(Boolean(userRes.canSwitchProfiles));
+      }
       if (availRes.success) setAvailableUsers(availRes.users || []);
       if (quartiersRes.success) setQuartiers(quartiersRes.quartiers);
 
@@ -148,18 +153,24 @@ export default function App() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ userId }),
       });
-      const data = await res.json();
-      if (data.success) {
-        setCurrentUser(data.user);
-        // Ajuster l'onglet par défaut si rôle incompatible
-        if (data.user.role === 'agent_individuel') setActiveTab('consultation_indiv');
-        else if (data.user.role === 'agent_collectif') setActiveTab('consultation_coll');
-        else setActiveTab('dashboard');
-
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok || !data.success) {
+        setSwitchError(data.message || 'Impossible de changer de profil.');
+        // Resynchronise le sélecteur avec le profil réellement actif.
         await fetchAllData();
+        return;
       }
+      setSwitchError(null);
+      setCurrentUser(data.user);
+      // Ajuster l'onglet par défaut si rôle incompatible
+      if (data.user.role === 'agent_individuel') setActiveTab('consultation_indiv');
+      else if (data.user.role === 'agent_collectif') setActiveTab('consultation_coll');
+      else setActiveTab('dashboard');
+
+      await fetchAllData();
     } catch (e) {
       console.error(e);
+      setSwitchError('Erreur réseau lors du changement de profil.');
     }
   };
 
@@ -352,6 +363,7 @@ export default function App() {
       <Header
         currentUser={currentUser}
         availableUsers={availableUsers}
+        canSwitchProfiles={canSwitchProfiles}
         onSwitchUser={handleSwitchUser}
         isOnline={isOnline}
         onToggleOnline={() => setIsOnline(!isOnline)}
@@ -359,6 +371,22 @@ export default function App() {
         onSyncNow={handleSyncNow}
         isSyncing={isSyncing}
       />
+
+      {switchError && (
+        <div
+          role="alert"
+          className="bg-red-950/90 border-b border-red-800 text-red-200 text-xs px-4 py-2 flex items-center justify-center gap-3"
+        >
+          <span>{switchError}</span>
+          <button
+            type="button"
+            onClick={() => setSwitchError(null)}
+            className="underline hover:text-white"
+          >
+            Fermer
+          </button>
+        </div>
+      )}
 
       {/* Barre de navigation par onglets conditionnée aux autorisations du rôle */}
       <Navigation

@@ -101,11 +101,12 @@ The security model is fundamentally broken. The authentication is simulated for 
 
 ## Post-Remediation Status
 
-**Fixes Applied:** 4 targeted improvements
+**Fixes Applied:** 5 targeted improvements
 - Protected user switching (admin-only + auth check)
 - Added security headers
 - Implemented atomic database writes
 - Added health check endpoint
+- Separated authenticated account from active profile (fixes switch lockout) and stopped leaking contact data via the profile list
 
 **Remaining Critical Issues:** Authentication still simulated, no CSRF protection, plaintext data storage
 

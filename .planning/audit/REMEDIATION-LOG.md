@@ -43,6 +43,20 @@
 - **Tests:** Manual verification
 - **Status:** ✅ FIXED
 
+### 5. Profile-Switch Lockout & PII Leak (follow-up to CRIT-AUTH-002)
+- **Files:** `server.ts`, `src/server/database.ts`, `src/App.tsx`, `src/components/Header.tsx`, `data/db.json`
+- **Problem:** Locking `/api/auth/switch-user` to the *active* profile meant that switching to a non-admin profile permanently trapped the session there (the active profile was no longer admin). The UI still showed the switcher and silently ignored the 403. `/api/auth/available-users` also returned full user records (email, phone).
+- **Changes:**
+  - Added `authenticatedUserId` to the DB schema, separate from `currentUserId` (active/impersonated profile). Legacy databases are migrated on load.
+  - Authorization for switching now uses the authenticated account (`req.authUser`), so an admin can always return to their own profile.
+  - `GET /api/auth/current` now returns `authUser` + `canSwitchProfiles`.
+  - `GET /api/auth/available-users` returns only `id, nom, prenom, role, statut_compte, quartier_*` (no contact data).
+  - Each switch writes a `CHANGEMENT_PROFIL_DEMO` audit entry against the authenticated admin.
+  - The profile selector is only rendered when `canSwitchProfiles` is true; failures now surface in a dismissible error banner instead of being swallowed.
+  - Reset `data/db.json` to `currentUserId = authenticatedUserId = u-admin`.
+- **Tests:** `tsc --noEmit` clean; live API tests: admin → agent → admin succeeds; empty `userId` returns 400; with a non-admin authenticated account, switching returns 403 and `canSwitchProfiles=false`.
+- **Status:** ✅ FIXED
+
 ## Regression Review
 
 ### Authentication

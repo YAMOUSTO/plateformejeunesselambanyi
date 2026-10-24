@@ -26,7 +26,15 @@ export interface DatabaseSchema {
   espaces_jeunesse: EspaceJeunesse[];
   audit_logs: AuditLog[];
   projets_citoyens: ProjetCitoyen[];
+  /** Profil actif (éventuellement impersonné par un administrateur). */
   currentUserId: string;
+  /**
+   * Compte réellement authentifié. Distinct de `currentUserId` pour que
+   * l'administrateur puisse revenir à son propre profil après avoir changé
+   * de profil de démonstration. Remplacé par une session serveur lors de la
+   * mise en place de l'authentification réelle.
+   */
+  authenticatedUserId: string;
 }
 
 // 14 quartiers officiels de Lambanyi (selon la liste officielle communale)
@@ -479,7 +487,13 @@ export class Database {
       }
       if (fs.existsSync(DB_FILE)) {
         const raw = fs.readFileSync(DB_FILE, 'utf-8');
-        return JSON.parse(raw);
+        const parsed = JSON.parse(raw) as DatabaseSchema;
+        // Compatibilité avec les bases existantes antérieures à la séparation
+        // compte authentifié / profil actif.
+        if (!parsed.authenticatedUserId) {
+          parsed.authenticatedUserId = parsed.currentUserId;
+        }
+        return parsed;
       }
     } catch (e) {
       console.warn('Erreur lors du chargement de la DB, réinitialisation avec les données de départ', e);
@@ -506,6 +520,7 @@ export class Database {
       ],
       projets_citoyens: INITIAL_PROJETS,
       currentUserId: 'u-admin',
+      authenticatedUserId: 'u-admin',
     };
     this.save(initial);
     return initial;
@@ -534,6 +549,12 @@ export class Database {
   public getCurrentUser(): UserProfile {
     const user = this.data.users.find((u) => u.id === this.data.currentUserId);
     if (!user) return this.data.users[0];
+    return user;
+  }
+
+  public getAuthenticatedUser(): UserProfile {
+    const user = this.data.users.find((u) => u.id === this.data.authenticatedUserId);
+    if (!user) return this.getCurrentUser();
     return user;
   }
 
@@ -569,6 +590,9 @@ export class Database {
       throw new Error('Fichier de sauvegarde invalide ou incomplet.');
     }
     this.data = backup;
+    if (!this.data.authenticatedUserId) {
+      this.data.authenticatedUserId = this.data.currentUserId;
+    }
     this.save();
     this.logAudit({
       user_id: this.data.currentUserId,

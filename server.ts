@@ -33,6 +33,8 @@ app.use((req, res, next) => {
 app.use((req, res, next) => {
   const currentUser = db.getCurrentUser();
   (req as any).user = currentUser;
+  // Compte réellement authentifié, distinct du profil actif (impersonation admin).
+  (req as any).authUser = db.getAuthenticatedUser();
   next();
 });
 
@@ -45,29 +47,59 @@ app.get('/api/health', (_req: Request, res: Response) => {
 
 app.get('/api/auth/current', (req: Request, res: Response) => {
   const user = db.getCurrentUser();
-  res.json({ success: true, user });
+  const authUser: UserProfile = (req as any).authUser;
+  res.json({
+    success: true,
+    user,
+    authUser,
+    // Seul un administrateur authentifié peut changer de profil.
+    canSwitchProfiles: authUser?.role === 'admin_communal',
+  });
 });
 
 app.get('/api/auth/available-users', (_req: Request, res: Response) => {
-  res.json({ success: true, users: db.getData().users });
+  // Liste minimale pour le sélecteur de profil : aucune donnée de contact
+  // (email, téléphone) n'est exposée.
+  const users = db.getData().users.map((u) => ({
+    id: u.id,
+    nom: u.nom,
+    prenom: u.prenom,
+    role: u.role,
+    quartier_id: u.quartier_id,
+    quartier_nom: u.quartier_nom,
+    statut_compte: u.statut_compte,
+  }));
+  res.json({ success: true, users });
 });
 
 app.post('/api/auth/switch-user', (req: Request, res: Response) => {
-  const currentUser: UserProfile = (req as any).user;
-  const authCheck = isAccountAuthorized(currentUser);
+  // L'autorisation repose sur le compte authentifié, pas sur le profil actif :
+  // un administrateur peut ainsi revenir à son profil après une bascule.
+  const authUser: UserProfile = (req as any).authUser;
+  const authCheck = isAccountAuthorized(authUser);
   if (!authCheck.allowed) {
     return res.status(authCheck.statusCode || 403).json({ success: false, message: authCheck.reason });
   }
   // Seul l'administrateur communal peut changer d'utilisateur
-  if (currentUser.role !== 'admin_communal') {
+  if (authUser.role !== 'admin_communal') {
     return res.status(403).json({ success: false, message: 'Seul l\'administrateur communal peut changer d\'utilisateur.' });
   }
   const { userId } = req.body;
-  if (!userId) {
+  if (!userId || typeof userId !== 'string') {
     return res.status(400).json({ success: false, message: 'userId requis.' });
   }
   try {
     const switched = db.setCurrentUserId(userId);
+    db.logAudit({
+      user_id: authUser.id,
+      user_nom: `${authUser.prenom} ${authUser.nom}`,
+      user_role: authUser.role,
+      action: 'CHANGEMENT_PROFIL_DEMO',
+      entity_type: 'profile',
+      entity_id: switched.id,
+      donnees_apres: { id: switched.id, role: switched.role },
+      motif: `Bascule du profil de démonstration vers ${switched.prenom} ${switched.nom} (${switched.role})`,
+    });
     res.json({ success: true, user: switched });
   } catch (err: any) {
     res.status(404).json({ success: false, message: err.message });

@@ -5,6 +5,7 @@ import type { UserProfile } from '../shared/types.ts';
 interface HeaderProps {
   currentUser: UserProfile;
   availableUsers: UserProfile[];
+  canSwitchProfiles: boolean;
   onSwitchUser: (userId: string) => void;
   isOnline: boolean;
   onToggleOnline: () => void;
@@ -16,6 +17,7 @@ interface HeaderProps {
 export const Header: React.FC<HeaderProps> = ({
   currentUser,
   availableUsers,
+  canSwitchProfiles,
   onSwitchUser,
   isOnline,
   onToggleOnline,
@@ -116,22 +118,24 @@ export const Header: React.FC<HeaderProps> = ({
               </span>
             </div>
 
-            <div className="flex items-center">
-              <label htmlFor="user-select" className="sr-only">Changer de profil de test</label>
-              <select
-                id="user-select"
-                aria-label="Sélectionner le profil d'évaluation"
-                value={currentUser.id}
-                onChange={(e) => onSwitchUser(e.target.value)}
-                className="bg-neutral-900 border border-neutral-600 rounded px-2 py-1 text-xs text-neutral-200 focus:outline-none focus:ring-1 focus:ring-emerald-500"
-              >
-                {availableUsers.map((u) => (
-                  <option key={u.id} value={u.id}>
-                    {u.nom} ({u.role.replace('_', ' ')})
-                  </option>
-                ))}
-              </select>
-            </div>
+            {canSwitchProfiles && (
+              <div className="flex items-center">
+                <label htmlFor="user-select" className="sr-only">Changer de profil de test</label>
+                <select
+                  id="user-select"
+                  aria-label="Sélectionner le profil d'évaluation"
+                  value={currentUser.id}
+                  onChange={(e) => onSwitchUser(e.target.value)}
+                  className="bg-neutral-900 border border-neutral-600 rounded px-2 py-1 text-xs text-neutral-200 focus:outline-none focus:ring-1 focus:ring-emerald-500"
+                >
+                  {availableUsers.map((u) => (
+                    <option key={u.id} value={u.id}>
+                      {u.nom} ({u.role.replace('_', ' ')})
+                    </option>
+                  ))}
+                </select>
+              </div>
+            )}
           </div>
         </div>
       </div>
