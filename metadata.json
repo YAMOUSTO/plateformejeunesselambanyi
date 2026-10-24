@@ -1,0 +1,6 @@
+{
+  "name": "Plateforme Jeunesse Lambanyi",
+  "description": "Plateforme communale de consultation et recensement des jeunes des 14 quartiers de Lambanyi (Conakry) avec collecte mobile hors connexion, validation hiérarchique et statistiques décisionnelles.",
+  "requestFramePermissions": ["geolocation"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

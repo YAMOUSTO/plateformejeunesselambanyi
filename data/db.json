@@ -1,0 +1,600 @@
+{
+  "quartiers": [
+    {
+      "id": "q-lbn-01",
+      "code": "LBN-01",
+      "nom": "Lambanyi (chef lieu)",
+      "population_estimee": 18500,
+      "coordonnees": [
+        9.626,
+        -13.621
+      ]
+    },
+    {
+      "id": "q-lbn-02",
+      "code": "LBN-02",
+      "nom": "Nongo-Centre",
+      "population_estimee": 16200,
+      "coordonnees": [
+        9.605,
+        -13.64
+      ]
+    },
+    {
+      "id": "q-lbn-03",
+      "code": "LBN-03",
+      "nom": "Nongo Taady",
+      "population_estimee": 13400,
+      "coordonnees": [
+        9.612,
+        -13.648
+      ]
+    },
+    {
+      "id": "q-lbn-04",
+      "code": "LBN-04",
+      "nom": "Lambanyi",
+      "population_estimee": 14100,
+      "coordonnees": [
+        9.632,
+        -13.618
+      ]
+    },
+    {
+      "id": "q-lbn-05",
+      "code": "LBN-05",
+      "nom": "Yembeya",
+      "population_estimee": 11500,
+      "coordonnees": [
+        9.619,
+        -13.633
+      ]
+    },
+    {
+      "id": "q-lbn-06",
+      "code": "LBN-06",
+      "nom": "Waréah",
+      "population_estimee": 10200,
+      "coordonnees": [
+        9.639,
+        -13.61
+      ]
+    },
+    {
+      "id": "q-lbn-07",
+      "code": "LBN-07",
+      "nom": "Simbaya Gare",
+      "population_estimee": 21500,
+      "coordonnees": [
+        9.598,
+        -13.625
+      ]
+    },
+    {
+      "id": "q-lbn-08",
+      "code": "LBN-08",
+      "nom": "Yattaya centre",
+      "population_estimee": 17800,
+      "coordonnees": [
+        9.645,
+        -13.605
+      ]
+    },
+    {
+      "id": "q-lbn-09",
+      "code": "LBN-09",
+      "nom": "Nassouroulaye",
+      "population_estimee": 12600,
+      "coordonnees": [
+        9.615,
+        -13.618
+      ]
+    },
+    {
+      "id": "q-lbn-10",
+      "code": "LBN-10",
+      "nom": "Bantounka 1",
+      "population_estimee": 9400,
+      "coordonnees": [
+        9.608,
+        -13.612
+      ]
+    },
+    {
+      "id": "q-lbn-11",
+      "code": "LBN-11",
+      "nom": "Bantounka 2",
+      "population_estimee": 10800,
+      "coordonnees": [
+        9.614,
+        -13.608
+      ]
+    },
+    {
+      "id": "q-lbn-12",
+      "code": "LBN-12",
+      "nom": "Soumanbossia",
+      "population_estimee": 11900,
+      "coordonnees": [
+        9.628,
+        -13.605
+      ]
+    },
+    {
+      "id": "q-lbn-13",
+      "code": "LBN-13",
+      "nom": "Wanindara",
+      "population_estimee": 15700,
+      "coordonnees": [
+        9.602,
+        -13.6
+      ]
+    },
+    {
+      "id": "q-lbn-14",
+      "code": "LBN-14",
+      "nom": "Kinifi",
+      "population_estimee": 8900,
+      "coordonnees": [
+        9.648,
+        -13.588
+      ]
+    }
+  ],
+  "users": [
+    {
+      "id": "u-admin",
+      "email": "admin.commune@lambanyi.gov.gn",
+      "nom": "Soumah",
+      "prenom": "Yamoussa",
+      "telephone": "+224 621 10 20 30",
+      "role": "admin_communal",
+      "statut_compte": "actif",
+      "created_at": "2026-10-01T08:00:00Z"
+    },
+    {
+      "id": "u-maire",
+      "email": "maire@lambanyi.gov.gn",
+      "nom": "Diallo",
+      "prenom": "Mamadouba",
+      "telephone": "+224 622 00 00 01",
+      "role": "maire_lecture",
+      "statut_compte": "actif",
+      "created_at": "2026-10-01T08:00:00Z"
+    },
+    {
+      "id": "u-sup-lbn",
+      "email": "superviseur.cheflieu@lambanyi.gov.gn",
+      "nom": "Bah",
+      "prenom": "Ibrahima",
+      "telephone": "+224 620 44 55 66",
+      "role": "superviseur_quartier",
+      "quartier_id": "q-lbn-01",
+      "quartier_nom": "Lambanyi (chef lieu)",
+      "statut_compte": "actif",
+      "created_at": "2026-10-01T08:00:00Z",
+      "derniere_connexion": "2026-10-24T11:57:26.236Z"
+    },
+    {
+      "id": "u-sup-yattaya",
+      "email": "superviseur.yattaya@lambanyi.gov.gn",
+      "nom": "Diallo",
+      "prenom": "Fatoumata Binta",
+      "telephone": "+224 623 88 99 00",
+      "role": "superviseur_quartier",
+      "quartier_id": "q-lbn-08",
+      "quartier_nom": "Yattaya centre",
+      "statut_compte": "actif",
+      "created_at": "2026-10-01T08:00:00Z"
+    },
+    {
+      "id": "u-agent-indiv",
+      "email": "agent.indiv@lambanyi.gov.gn",
+      "nom": "Camara",
+      "prenom": "Sékou",
+      "telephone": "+224 628 33 22 11",
+      "role": "agent_individuel",
+      "quartier_id": "q-lbn-01",
+      "quartier_nom": "Lambanyi (chef lieu)",
+      "statut_compte": "actif",
+      "created_at": "2026-10-05T09:00:00Z",
+      "derniere_connexion": "2026-10-24T12:01:58.534Z"
+    },
+    {
+      "id": "u-agent-coll",
+      "email": "agent.coll@lambanyi.gov.gn",
+      "nom": "Sylla",
+      "prenom": "Mariama",
+      "telephone": "+224 629 77 66 55",
+      "role": "agent_collectif",
+      "quartier_id": "q-lbn-01",
+      "quartier_nom": "Lambanyi (chef lieu)",
+      "statut_compte": "actif",
+      "created_at": "2026-10-05T09:00:00Z"
+    }
+  ],
+  "fiches_individuelles": [
+    {
+      "id": "f-ind-001",
+      "agent_id": "u-agent-indiv",
+      "agent_nom": "Sékou Camara",
+      "quartier_id": "q-lbn-01",
+      "quartier_nom": "Lambanyi (chef lieu)",
+      "secteur": "Secteur Carrefour Canari",
+      "nom": "Bangoura",
+      "prenom": "Aboubacar Sidiki",
+      "sexe": "M",
+      "age": 23,
+      "telephone": "+224 624 11 22 33",
+      "scolarise": true,
+      "niveau_etudes": "universitaire",
+      "dernier_diplome": "Licence Informatique",
+      "situation_emploi": "sans_emploi",
+      "metier_competences": "Maintenance réseau, bureautique",
+      "besoins_formation_insertion": "Développement web & entrepreneuriat numérique",
+      "categories_preoccupations": [
+        "emploi",
+        "assainissement",
+        "sport"
+      ],
+      "propositions_mairie": "Créer un incubateur communal de projets numériques et équiper la maison des jeunes en connexion fibre.",
+      "consentement_jeune": true,
+      "est_mineur": false,
+      "statut": "valide",
+      "statut_doublon": "aucun",
+      "valide_par": "u-sup-lbn",
+      "valide_le": "2026-10-10T14:30:00Z",
+      "version": 1,
+      "client_updated_at": "2026-10-09T10:00:00Z",
+      "server_updated_at": "2026-10-10T14:30:00Z"
+    },
+    {
+      "id": "f-ind-002",
+      "agent_id": "u-agent-indiv",
+      "agent_nom": "Sékou Camara",
+      "quartier_id": "q-lbn-01",
+      "quartier_nom": "Lambanyi (chef lieu)",
+      "secteur": "Secteur Marché",
+      "nom": "Barry",
+      "prenom": "Kadiatou",
+      "sexe": "F",
+      "age": 17,
+      "telephone": "+224 621 99 88 77",
+      "scolarise": false,
+      "niveau_etudes": "college",
+      "situation_emploi": "apprenti",
+      "metier_competences": "Couture et stylisme traditionnel",
+      "besoins_formation_insertion": "Aide à l’achat de machine à coudre industrielle",
+      "categories_preoccupations": [
+        "emploi",
+        "formation",
+        "securite"
+      ],
+      "propositions_mairie": "Organiser des foires artisanales communales pour permettre aux jeunes apprenties d’exposer leurs créations.",
+      "consentement_jeune": true,
+      "est_mineur": true,
+      "accord_parental_nom": "Barry Thierno (Père)",
+      "accord_parental_lien": "père",
+      "accord_parental_date": "2026-10-11",
+      "statut": "valide",
+      "statut_doublon": "aucun",
+      "valide_par": "u-sup-lbn",
+      "valide_le": "2026-10-12T11:00:00Z",
+      "version": 1,
+      "client_updated_at": "2026-10-11T16:00:00Z",
+      "server_updated_at": "2026-10-12T11:00:00Z"
+    },
+    {
+      "id": "f-ind-003",
+      "agent_id": "u-agent-indiv",
+      "agent_nom": "Sékou Camara",
+      "quartier_id": "q-lbn-01",
+      "quartier_nom": "Lambanyi (chef lieu)",
+      "secteur": "Secteur Corniche Nord",
+      "nom": "Bangoura",
+      "prenom": "Aboubacar",
+      "sexe": "M",
+      "age": 23,
+      "telephone": "+224 624 11 22 33",
+      "scolarise": true,
+      "niveau_etudes": "universitaire",
+      "situation_emploi": "sans_emploi",
+      "categories_preoccupations": [
+        "emploi"
+      ],
+      "consentement_jeune": true,
+      "est_mineur": false,
+      "statut": "envoye",
+      "statut_doublon": "doublon_potentiel",
+      "doublon_de_fiche_id": "f-ind-001",
+      "doublon_score": 92,
+      "doublon_raisons": [
+        "Nom et prénom quasi identiques",
+        "Même quartier",
+        "Même numéro de téléphone (+224 624 11 22 33)",
+        "Âge identique (23 ans)"
+      ],
+      "version": 1,
+      "client_updated_at": "2026-10-15T11:15:00Z",
+      "server_updated_at": "2026-10-15T11:16:00Z"
+    },
+    {
+      "id": "f-ind-004",
+      "agent_id": "u-agent-indiv",
+      "agent_nom": "Sékou Camara",
+      "quartier_id": "q-lbn-01",
+      "quartier_nom": "Lambanyi (chef lieu)",
+      "secteur": "Secteur Mosquée",
+      "nom": "Diallo",
+      "prenom": "Alpha Oumar",
+      "sexe": "M",
+      "age": 26,
+      "telephone": "+224 622 45 67 89",
+      "scolarise": false,
+      "niveau_etudes": "professionnel",
+      "dernier_diplome": "CAP Électricité",
+      "situation_emploi": "entrepreneur",
+      "metier_competences": "Installation solaire et électricité bâtiment",
+      "besoins_formation_insertion": "Accès au crédit communal pour outillage",
+      "categories_preoccupations": [
+        "emploi",
+        "assainissement"
+      ],
+      "propositions_mairie": "Éclairage public solaire confié aux jeunes artisans du quartier.",
+      "consentement_jeune": true,
+      "est_mineur": false,
+      "statut": "envoye",
+      "statut_doublon": "aucun",
+      "version": 1,
+      "client_updated_at": "2026-10-18T09:00:00Z",
+      "server_updated_at": "2026-10-18T09:00:00Z"
+    },
+    {
+      "id": "f-ind-005",
+      "agent_id": "u-agent-indiv",
+      "agent_nom": "Sékou Camara",
+      "quartier_id": "q-lbn-01",
+      "quartier_nom": "Lambanyi (chef lieu)",
+      "secteur": "Secteur Carrefour Lambanyi",
+      "nom": "Soumah",
+      "prenom": "Fatou",
+      "sexe": "F",
+      "age": 20,
+      "telephone": "+224 626 55 44 33",
+      "scolarise": true,
+      "niveau_etudes": "universitaire",
+      "situation_emploi": "sans_emploi",
+      "categories_preoccupations": [
+        "education",
+        "culture"
+      ],
+      "consentement_jeune": true,
+      "est_mineur": false,
+      "statut": "a_corriger",
+      "commentaire_superviseur": "Préciser le dernier diplôme ou la filière d’études suivie avant validation.",
+      "statut_doublon": "aucun",
+      "version": 1,
+      "client_updated_at": "2026-10-17T15:20:00Z",
+      "server_updated_at": "2026-10-18T10:00:00Z"
+    },
+    {
+      "id": "f-ind-006",
+      "agent_id": "u-agent-indiv",
+      "agent_nom": "Sékou Camara",
+      "quartier_id": "q-lbn-08",
+      "quartier_nom": "Yattaya centre",
+      "secteur": "Secteur Plateau",
+      "nom": "Condé",
+      "prenom": "Fanta",
+      "sexe": "F",
+      "age": 22,
+      "telephone": "+224 625 33 22 11",
+      "scolarise": false,
+      "niveau_etudes": "lycee",
+      "situation_emploi": "sans_emploi",
+      "categories_preoccupations": [
+        "emploi",
+        "sante"
+      ],
+      "consentement_jeune": true,
+      "est_mineur": false,
+      "statut": "valide",
+      "statut_doublon": "aucun",
+      "valide_par": "u-sup-yattaya",
+      "valide_le": "2026-10-14T09:00:00Z",
+      "version": 1,
+      "client_updated_at": "2026-10-13T14:00:00Z",
+      "server_updated_at": "2026-10-14T09:00:00Z"
+    },
+    {
+      "id": "f-ind-007",
+      "agent_id": "u-agent-indiv",
+      "agent_nom": "Sékou Camara",
+      "quartier_id": "q-lbn-08",
+      "quartier_nom": "Yattaya centre",
+      "secteur": "Secteur Carrefour Yattaya",
+      "nom": "Keïta",
+      "prenom": "Lamine",
+      "sexe": "M",
+      "age": 25,
+      "telephone": "+224 627 88 99 00",
+      "scolarise": true,
+      "niveau_etudes": "universitaire",
+      "situation_emploi": "entrepreneur",
+      "metier_competences": "Commerce et maraîchage périurbain",
+      "categories_preoccupations": [
+        "emploi",
+        "assainissement"
+      ],
+      "consentement_jeune": true,
+      "est_mineur": false,
+      "statut": "valide",
+      "statut_doublon": "aucun",
+      "valide_par": "u-sup-yattaya",
+      "valide_le": "2026-10-14T10:00:00Z",
+      "version": 1,
+      "client_updated_at": "2026-10-13T16:00:00Z",
+      "server_updated_at": "2026-10-14T10:00:00Z"
+    }
+  ],
+  "fiches_collectives": [
+    {
+      "id": "f-coll-001",
+      "agent_id": "u-agent-coll",
+      "agent_nom": "Mariama Sylla",
+      "quartier_id": "q-lbn-01",
+      "quartier_nom": "Lambanyi (chef lieu)",
+      "nom_organisation": "AJDL - Association des Jeunes Dynamiques de Lambanyi",
+      "type_organisation": "association",
+      "annee_creation": 2021,
+      "nombre_membres": 85,
+      "contact_referent_nom": "Diallo Ousmane",
+      "contact_referent_tel": "+224 620 12 34 88",
+      "date_rencontre": "2026-10-08",
+      "lieu_rencontre": "Foyer des Jeunes Lambanyi (chef lieu)",
+      "nombre_participants_total": 42,
+      "nombre_femmes_filles": 18,
+      "difficultes_par_theme": {
+        "assainissement": "Caniveaux bouchés pendant les grandes pluies et dépotoirs sauvages.",
+        "emploi": "Absence d’ateliers partagés pour les jeunes diplômés et artisans.",
+        "sport": "Terrain de foot poussiéreux impraticable en saison sèche."
+      },
+      "projets_communautaires": "Opération hebdomadaire de curage des caniveaux et reboisement de la corniche.",
+      "besoins_equipements": "Pelles, brouettes, gilets de sécurité, bottes et conteneurs poubelles.",
+      "idees_activites_revenus": "Création d’une brigade jeune de pré-collecte des ordures ménagères avec tarification sociale.",
+      "statut": "valide",
+      "valide_par": "u-sup-lbn",
+      "valide_le": "2026-10-09T16:00:00Z",
+      "version": 1,
+      "client_updated_at": "2026-10-08T18:00:00Z",
+      "server_updated_at": "2026-10-09T16:00:00Z"
+    },
+    {
+      "id": "f-coll-002",
+      "agent_id": "u-agent-coll",
+      "agent_nom": "Mariama Sylla",
+      "quartier_id": "q-lbn-08",
+      "quartier_nom": "Yattaya centre",
+      "nom_organisation": "Club des Jeunes Filles Entrepreneures de Yattaya",
+      "type_organisation": "groupement_jeunes",
+      "annee_creation": 2023,
+      "nombre_membres": 34,
+      "contact_referent_nom": "Camara Hadja Aissatou",
+      "contact_referent_tel": "+224 628 90 90 90",
+      "date_rencontre": "2026-10-12",
+      "lieu_rencontre": "École primaire de Yattaya centre",
+      "nombre_participants_total": 28,
+      "nombre_femmes_filles": 28,
+      "difficultes_par_theme": {
+        "formation": "Besoin de formation en gestion comptable simplifiée et marketing digital.",
+        "securite": "Rues sombres le soir au retour du marché."
+      },
+      "projets_communautaires": "Boutique collective éphémère pour les produits cosmétiques et textiles locaux.",
+      "statut": "valide",
+      "valide_par": "u-sup-yattaya",
+      "valide_le": "2026-10-14T11:00:00Z",
+      "version": 1,
+      "client_updated_at": "2026-10-12T17:00:00Z",
+      "server_updated_at": "2026-10-14T11:00:00Z"
+    }
+  ],
+  "espaces_jeunesse": [
+    {
+      "id": "esp-001",
+      "quartier_id": "q-lbn-01",
+      "quartier_nom": "Lambanyi (chef lieu)",
+      "nom": "Maison des Jeunes de Lambanyi",
+      "type_espace": "maison_des_jeunes",
+      "etat": "moyen",
+      "latitude": 9.626,
+      "longitude": -13.621,
+      "description_besoins": "Bâtiment communal nécessitant réfection du toit, sonorisation et électrification solaire.",
+      "collecte_par": "u-agent-coll",
+      "created_at": "2026-10-08T10:00:00Z"
+    },
+    {
+      "id": "esp-002",
+      "quartier_id": "q-lbn-01",
+      "quartier_nom": "Lambanyi (chef lieu)",
+      "nom": "Terrain de Proximité Canari",
+      "type_espace": "terrain_football",
+      "etat": "degrade",
+      "latitude": 9.627,
+      "longitude": -13.6185,
+      "description_besoins": "Espace sableux très fréquenté. Besoin de nivellement, grillages de protection et poteaux.",
+      "collecte_par": "u-agent-coll",
+      "created_at": "2026-10-08T11:30:00Z"
+    },
+    {
+      "id": "esp-003",
+      "quartier_id": "q-lbn-08",
+      "quartier_nom": "Yattaya centre",
+      "nom": "Plateau Omnisport de Yattaya",
+      "type_espace": "espace_polyvalent",
+      "etat": "tres_bon",
+      "latitude": 9.645,
+      "longitude": -13.605,
+      "description_besoins": "Bon état général. Utilisé pour basket et volley. Manque d’éclairage nocturne.",
+      "collecte_par": "u-agent-coll",
+      "created_at": "2026-10-12T14:00:00Z"
+    },
+    {
+      "id": "esp-004",
+      "quartier_id": "q-lbn-06",
+      "quartier_nom": "Waréah",
+      "nom": "Foyer des Pêcheurs Artisans de Waréah",
+      "type_espace": "foyer_socioculturel",
+      "etat": "moyen",
+      "latitude": 9.639,
+      "longitude": -13.61,
+      "description_besoins": "Lieu de réunion des jeunes marins et mareyeuses. Besoin de tables et bancs.",
+      "collecte_par": "u-agent-coll",
+      "created_at": "2026-10-13T09:30:00Z"
+    }
+  ],
+  "audit_logs": [
+    {
+      "id": "log-001",
+      "user_id": "u-admin",
+      "user_nom": "Yamoussa Soumah",
+      "user_role": "admin_communal",
+      "action": "INITIALISATION_SYSTEME",
+      "entity_type": "systeme",
+      "entity_id": "lambanyi-core",
+      "motif": "Démarrage de la plateforme de consultation communale",
+      "created_at": "2026-10-01T08:00:00Z"
+    }
+  ],
+  "projets_citoyens": [
+    {
+      "id": "prj-001",
+      "code_suivi": "LBN-PRJ-2026-0001",
+      "nom_porteur": "Mamadouba Camara",
+      "contact_porteur": "+224 622 10 99 88",
+      "quartier_id": "q-lbn-01",
+      "quartier_nom": "Lambanyi (chef lieu)",
+      "titre_projet": "Unité mobile de compostage des déchets maraîchers",
+      "description": "Collecter les résidus organiques des marchés de Lambanyi et Waréah pour produire un engrais naturel pour les pépiniéristes.",
+      "type_demande": "projet_economique",
+      "statut": "en_cours_examen",
+      "reponse_mairie": "Dossier transmis à la commission développement durable de la commune.",
+      "created_at": "2026-10-15T09:00:00Z"
+    },
+    {
+      "id": "prj-002",
+      "code_suivi": "LBN-PRJ-2026-0002",
+      "nom_porteur": "Bountouraby Sylla",
+      "contact_porteur": "+224 628 44 33 22",
+      "quartier_id": "q-lbn-08",
+      "quartier_nom": "Yattaya centre",
+      "titre_projet": "Tournoi Inter-Quartiers de Maracana & Sensibilisation Civique",
+      "description": "Mobiliser plus de 300 jeunes autour du sport tout en distribuant des fascicules de civisme et de protection de l’environnement.",
+      "type_demande": "preoccupation_citoyenne",
+      "statut": "rdv_programme",
+      "reponse_mairie": "Rendez-vous fixé avec le Directeur communal de la jeunesse et des sports.",
+      "date_rdv": "2026-10-25T10:00:00Z",
+      "created_at": "2026-10-16T11:00:00Z"
+    }
+  ],
+  "currentUserId": "u-agent-indiv"
+}
